@@ -26,8 +26,11 @@ class FeaturesViewSet(viewsets.ModelViewSet):
             return FeaturesPositionSerializer
     
     def create(self, request):
-        serializer = FeaturesPositionSerializer(data = request.data)        
+        print(request.data)
+        serializer = FeaturesPositionSerializer(data = request.data)    
+        print(serializer)    
         if serializer.is_valid():
+            print(serializer._validated_data)
             x=[dictToList(serializer._validated_data.values())]
             feature=serializer.save()           
             module_dir = Path(__file__).resolve().parent.parent
@@ -44,5 +47,6 @@ class FeaturesViewSet(viewsets.ModelViewSet):
             feature.position=answer[3]
             feature.save()
             return Response({'message':'Features created correctly',"position": answer },status = status.HTTP_201_CREATED)
+        print(serializer.errors)
         return Response(serializer.errors,status = status.HTTP_400_BAD_REQUEST)
     

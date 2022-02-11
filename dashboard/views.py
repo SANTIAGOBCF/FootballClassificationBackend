@@ -23,8 +23,3 @@ def result(request):
     print("Se cargo el modelo!!")
     res=np.around(modelo_cargado.predict(x), decimals=4)
     return HttpResponse(res)
-
-"""def pro(request):
-    response = HttpResponse(request.headers)
-    
-    return response"""
