@@ -13,7 +13,7 @@ def positionPlayer(num):
 def generateResult(res,indices):
     answer=[]
     for i in range(4):
-        ans=f"{res[indices[i]]}% - {positionPlayer(indices[i])}"
+        ans=f"{res[indices[i]]} - {positionPlayer(indices[i])}"
         answer.append(ans)
     return answer
             
